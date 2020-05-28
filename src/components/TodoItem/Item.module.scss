@@ -1,0 +1,25 @@
+.Item {
+  font-size: 1.25rem;
+}
+
+.Item button {
+  width: 35px;
+  margin: 3px;
+}
+
+.ItemLabel {
+  margin-left: 1.25rem;
+  line-height: 35px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ItemLabel.Done {
+  text-decoration: line-through;
+  color: forestgreen;
+}
+
+.ItemLabel.Important {
+  font-weight: bold;
+  color: steelblue;
+}
