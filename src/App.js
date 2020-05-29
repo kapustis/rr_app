@@ -1,38 +1,61 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import Header from './components/Header/Header'
 import TodoList from "./components/TodoList/TodoList";
 import {AddItem} from "./components/AddItem/AddItem";
 import './App.css';
 
-function App() {
-  const TodoData = [
-    { id: 1, label: 'Drink Coffee', important: false, done: false },
-    { id: 2, label: 'Learn React', important: true, done: false },
-    { id: 3, label: 'Make Awesome App', important: false, done: true }
-  ];
+const initialTodos = [
+  {id: 1, label: 'Drink Coffee', important: false, done: false},
+  {id: 2, label: 'Learn React', important: true, done: false},
+  {id: 3, label: 'Make Awesome App', important: false, done: true}
+];
 
-  const [todo, setTodo] = useState(TodoData);
-  const delHandler = (index) => {
-    setTodo(todo => todo.filter((item, i) => i !== index))
+const todoReducer = (state, action) => {
+  switch (action.type) {
+    case 'DONE_TODO':
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          const val = !todo.done
+          return {...todo, done: val};
+        } else {
+          return todo;
+        }
+      });
+    case  'MARK_TODO' :
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          const val = !todo.important
+          return {...todo, important: val};
+        } else {
+          return todo;
+        }
+      });
+    case 'DEL_TODO':
+      return state.filter(todo => todo.id !== action.id)
+    default:
+      return state;
   }
-  const markHandler = (index) => {
-    let newArr = [...todo];
-    let edItem = newArr[index];
-    edItem.important = !edItem.important;
-    newArr[index] = edItem;
-    setTodo(newArr);
+};
+
+function App() {
+  const [todos, dispatch] = useReducer(todoReducer,initialTodos);
+
+  const delHandler = (id) => {
+    dispatch({type: 'DEL_TODO',id:id})
+  }
+  const markHandler = (id) => {
+    dispatch({type: 'MARK_TODO',id:id})
   }
   const doneHandler = (id) => {
-    const done = !todo.find(t => t.id === id).done;
-    console.log(done);
+    dispatch({type: 'DONE_TODO', id: id})
   }
 
-  const doneCount = todo.filter((item) => item.done).length;
-  const amount = todo.length - doneCount;
+  const doneCount = todos.filter((item) => item.done).length;
+  const amount = todos.length - doneCount;
   return (
     <div className="app">
-      <Header doneCount={doneCount} amount={amount} />
-      <TodoList todo={todo} Del={delHandler} Mark={markHandler} Done={doneHandler}/>
+      <Header doneCount={doneCount} amount={amount}/>
+      <TodoList todo={todos} Del={delHandler} Mark={markHandler} Done={doneHandler}/>
       <AddItem/>
     </div>
   );

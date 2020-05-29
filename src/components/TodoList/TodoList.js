@@ -9,14 +9,14 @@ const TodoList = ({todo,Del,Done, Mark}) => {
   return (
     <ul className="todo-list list-group">
       {
-        todo.map((item, index) => {
+        todo.map((item) => {
           return (
-            <li key={index} className="list-group-item">
+            <li key={item.id} className="list-group-item">
               <TodoItem
                 todo={item}
-                onDelete={() => Del(index)}
+                onDelete={() => Del(item.id)}
                 onDone={() => Done(item.id)}
-                onMark={() => Mark(index)}
+                onMark={() => Mark(item.id)}
               />
             </li>
           );
