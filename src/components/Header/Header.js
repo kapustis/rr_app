@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
+import {TodoContext} from "../../context/todoContext";
 import classes from './Header.module.scss'
 
-const Header = ({amount,doneCount}) =>{
+const Header = () =>{
+  const {amount,doneCount} = useContext(TodoContext)
+
   const cls = [classes.Header];
   cls.push('d-flex');
 

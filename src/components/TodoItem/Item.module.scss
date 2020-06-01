@@ -14,12 +14,11 @@
   user-select: none;
 }
 
-.ItemLabel.Done {
-  text-decoration: line-through;
-  color: forestgreen;
-}
-
 .ItemLabel.Important {
   font-weight: bold;
   color: steelblue;
+}
+.ItemLabel.Done {
+  text-decoration: line-through;
+  color: forestgreen;
 }

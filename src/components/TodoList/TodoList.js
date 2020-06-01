@@ -1,22 +1,25 @@
-import React from "react";
+import React,{useContext} from "react";
+import {TodoContext} from "../../context/todoContext";
 import './TodoList.css'
 import TodoItem from "../TodoItem/TodoItem";
 
-const TodoList = ({todo,Del,Done, Mark}) => {
+const TodoList = () => {
+  const {state,delHandler,markHandler,doneHandler} = useContext(TodoContext)
 
-  if (!todo.length) return (<h1>gdg</h1>);
+  if (!state.length) return (<h1>gdg</h1>);
 
   return (
     <ul className="todo-list list-group">
       {
-        todo.map((item) => {
+        state.map((item) => {
           return (
             <li key={item.id} className="list-group-item">
+
               <TodoItem
                 todo={item}
-                onDelete={() => Del(item.id)}
-                onDone={() => Done(item.id)}
-                onMark={() => Mark(item.id)}
+                onDelete={() => delHandler(item.id)}
+                onDone={() => doneHandler(item.id)}
+                onMark={() => markHandler(item.id)}
               />
             </li>
           );
