@@ -1,5 +1,5 @@
 import React,{useContext} from "react";
-import {TodoContext} from "../../context/todoContext";
+import {TodoContext} from "../../context/TodoState";
 import classes from './Header.module.scss'
 
 const Header = () =>{
