@@ -9,7 +9,6 @@ export const FilterItem = () => {
 
   useEffect(() => {
     filterTodo(filter)
-    console.log(filter)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter])
   return (
