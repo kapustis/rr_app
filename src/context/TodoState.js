@@ -8,16 +8,28 @@ export const TodoState = ({children}) => {
     {id: 2, label: 'Learn React', important: true, done: false},
     {id: 3, label: 'Make Awesome App', important: false, done: true},
     {id: 4, label: 'Lake Awesome App', important: false, done: true},
-    {id: 5, label: 'Drink tea', important: false, done: true},
+    {id: 5, label: 'Drink tea', important: true, done: true},
   ];
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  const [todos,setTodos] = useState('')
+  const [todos, setTodos] = useState('')
 
-  useEffect(() =>{
+  useEffect(() => {
     setTodos(state)
-  },[state])
+  }, [state])
 
+  const filterTodo = (filter) => {
+    if (filter === 'all'){
+      setTodos(state)
+    }
+    else if (filter === 'active'){
+      const act =  state.filter((item) => (!item.done));
+      setTodos(act)
+    }
+    else if (filter === 'done'){
+      setTodos(state.filter((item) => (item.done)))
+    }
+  }
   const searchHandler = (search) => {
     const results = state.filter((todo) => {
       return todo.label.toLowerCase().includes(search.toLowerCase())
@@ -45,7 +57,7 @@ export const TodoState = ({children}) => {
   return (
     <TodoContext.Provider value={{
       todos, doneCount, amount,
-      addHandler, searchHandler, delHandler, markHandler, doneHandler
+      addHandler,filterTodo, searchHandler, delHandler, markHandler, doneHandler
     }}>
       {children}
     </TodoContext.Provider>
