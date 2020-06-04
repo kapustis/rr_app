@@ -8,7 +8,7 @@ export const TodoState = ({children}) => {
     {id: 2, label: 'Learn React', important: true, done: false},
     {id: 3, label: 'Make Awesome App', important: false, done: true},
     {id: 4, label: 'Lake Awesome App', important: false, done: true},
-    {id: 5, label: 'Drink tea', important: true, done: true},
+    {id: 5, label: 'Drink Tea', important: true, done: true},
   ];
 
   const [state, dispatch] = useReducer(todoReducer, initialState);
@@ -21,12 +21,9 @@ export const TodoState = ({children}) => {
   const filterTodo = (filter) => {
     if (filter === 'all'){
       setTodos(state)
-    }
-    else if (filter === 'active'){
-      const act =  state.filter((item) => (!item.done));
-      setTodos(act)
-    }
-    else if (filter === 'done'){
+    } else if (filter === 'active'){
+      setTodos(state.filter((item) => (!item.done)))
+    } else if (filter === 'done'){
       setTodos(state.filter((item) => (item.done)))
     }
   }
@@ -49,11 +46,8 @@ export const TodoState = ({children}) => {
   const doneHandler = (id) => {
     dispatch({type: 'DONE_TODO', id: id})
   }
-
-
   const doneCount = state.filter((item) => item.done).length;
   const amount = state.length - doneCount;
-
   return (
     <TodoContext.Provider value={{
       todos, doneCount, amount,
