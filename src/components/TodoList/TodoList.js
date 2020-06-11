@@ -3,7 +3,7 @@ import {TodoContext} from "../../context/TodoState";
 import './TodoList.css'
 import TodoItem from "../TodoItem/TodoItem";
 
-const TodoList = () => {
+export const TodoList = () => {
   const {todos,delHandler,markHandler,doneHandler} = useContext(TodoContext);
 
   if (!todos.length) return (<h1>gdg</h1>);
@@ -28,4 +28,4 @@ const TodoList = () => {
   )
 }
 
-export default TodoList
+

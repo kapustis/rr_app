@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from './components/Header/Header'
+import {Header} from './components/Header/Header'
 import {SearchPanel} from "./components/SearchPanel/SearchPanel";
-import TodoList from "./components/TodoList/TodoList";
+import {FilterItem} from "./components/FilterItem/FilterItem";
+import {TodoList} from "./components/TodoList/TodoList";
 import {AddItem} from "./components/AddItem/AddItem";
 import {TodoState} from "./context/TodoState";
 import './App.css';
-import {FilterItem} from "./components/FilterItem/FilterItem";
 
 function App() {
   return (

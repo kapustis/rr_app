@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import {TodoContext} from "../../context/TodoState";
 import classes from './Header.module.scss'
 
-const Header = () =>{
+export const Header = () =>{
   const {amount,doneCount} = useContext(TodoContext)
 
   const cls = [classes.Header];
@@ -16,4 +16,4 @@ const Header = () =>{
   )
 }
 
-export default Header
+
