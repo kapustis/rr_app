@@ -1,12 +1,12 @@
-import React,{useContext} from "react";
-import {TodoContext} from "../../context/TodoState";
+import React, { useContext } from 'react'
+import { TodoContext } from '../../context/TodoState'
 import classes from './Header.module.scss'
 
-export const Header = () =>{
-  const {amount,doneCount} = useContext(TodoContext)
+export const Header = () => {
+  const { amount, doneCount } = useContext(TodoContext)
 
-  const cls = [classes.Header];
-  cls.push('d-flex');
+  const cls = [classes.Header]
+  cls.push('d-flex')
 
   return (
     <header className={cls.join(' ')}>
@@ -15,5 +15,3 @@ export const Header = () =>{
     </header>
   )
 }
-
-

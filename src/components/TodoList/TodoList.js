@@ -1,12 +1,12 @@
-import React,{useContext} from "react";
-import {TodoContext} from "../../context/TodoState";
+import React, { useContext } from 'react'
+import { TodoContext } from '../../context/TodoState'
 import './TodoList.css'
-import TodoItem from "../TodoItem/TodoItem";
+import TodoItem from '../TodoItem/TodoItem'
 
 export const TodoList = () => {
-  const {todos,delHandler,markHandler,doneHandler} = useContext(TodoContext);
+  const { todos, delHandler, markHandler, doneHandler } = useContext(TodoContext)
 
-  if (!todos.length) return (<h1>gdg</h1>);
+  if (!todos.length) return (<h1>gdg</h1>)
 
   return (
     <ul className="todo-list list-group">
@@ -21,11 +21,9 @@ export const TodoList = () => {
                 onMark={() => markHandler(item.id)}
               />
             </li>
-          );
+          )
         })
       }
     </ul>
   )
 }
-
-
