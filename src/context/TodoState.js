@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { todoReducer } from './todoReducer'
 
-export const TodoContext = React.createContext()
+export const TodoContext = React.createContext(undefined, undefined)
 export const TodoState = ({ children }) => {
   const initialState = [
     { id: 1, label: 'Drink Coffee', important: false, done: false },
@@ -49,18 +49,18 @@ export const TodoState = ({ children }) => {
   const doneCount = state.filter((item) => item.done).length
   const amount = state.length - doneCount
   return (
-    <TodoContext.Provider value={{
-      todos,
-      doneCount,
-      amount,
-      addHandler,
-      filterTodo,
-      searchHandler,
-      delHandler,
-      markHandler,
-      doneHandler
-    }}>
-      {children}
-    </TodoContext.Provider>
+        <TodoContext.Provider value={{
+          todos,
+          doneCount,
+          amount,
+          addHandler,
+          filterTodo,
+          searchHandler,
+          delHandler,
+          markHandler,
+          doneHandler
+        }}>
+            {children}
+        </TodoContext.Provider>
   )
 }

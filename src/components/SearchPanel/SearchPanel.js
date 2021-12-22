@@ -8,7 +8,6 @@ export const SearchPanel = () => {
 
   useEffect(() => {
     searchHandler(search)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search])
 
   return (
