@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './Item.module.scss'
+import PropTypes from 'prop-types'
 
 const TodoItem = ({ todo, onDelete, onDone, onMark }) => {
   const cls = [classes.ItemLabel]
@@ -20,6 +21,13 @@ const TodoItem = ({ todo, onDelete, onDone, onMark }) => {
       </button>
     </div>
   )
+}
+
+TodoItem.propTypes = {
+  todo: PropTypes.any,
+  onDelete: PropTypes.func,
+  onDone: PropTypes.func,
+  onMark: PropTypes.func
 }
 
 export default TodoItem

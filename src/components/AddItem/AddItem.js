@@ -20,18 +20,19 @@ export const AddItem = () => {
   }
 
   return (
-    <div className="bottom-panel d-flex">
-      <input className="form-control new-todo-label"
-        placeholder=" Печатать тут"
-        value={newTodo}
-        onChange={event => setNewTodo(event.target.value)}
-        onKeyPress={onEnter}
-      />
-      <button className="btn btn-outline-secondary"
-        type="button"
-        onClick={handleAddClick}
-      >Add
-      </button>
-    </div>
+        <div className="bottom-panel d-flex">
+            <input className="form-control new-todo-label"
+                   placeholder=" Печатать тут"
+                   value={newTodo}
+                   onChange={event => setNewTodo(event.target.value)}
+                   onKeyPress={onEnter}
+            />
+            <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={handleAddClick}
+            >Add
+            </button>
+        </div>
   )
 }

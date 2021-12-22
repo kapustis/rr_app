@@ -1,7 +1,9 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import { todoReducer } from './todoReducer'
+import PropTypes from 'prop-types'
 
 export const TodoContext = React.createContext(undefined, undefined)
+
 export const TodoState = ({ children }) => {
   const initialState = [
     { id: 1, label: 'Drink Coffee', important: false, done: false },
@@ -27,16 +29,19 @@ export const TodoState = ({ children }) => {
       setTodos(state.filter((item) => (item.done)))
     }
   }
+
   const searchHandler = (search) => {
     const results = state.filter((todo) => {
       return todo.label.toLowerCase().includes(search.toLowerCase())
     })
     setTodos(results)
   }
+
   const addHandler = (label) => {
     const item = { id: state.length + 1, label: label, important: false, done: false }
     dispatch({ type: 'ADD_TODO', item })
   }
+
   const delHandler = (id) => {
     dispatch({ type: 'DEL_TODO', id: id })
   }
@@ -63,4 +68,8 @@ export const TodoState = ({ children }) => {
             {children}
         </TodoContext.Provider>
   )
+}
+
+TodoState.propTypes = {
+  children: PropTypes.any
 }
